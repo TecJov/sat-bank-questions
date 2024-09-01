@@ -79,7 +79,7 @@
 
         .question-container {
             background-color: #222;
-            color: #fff;
+            color: #000;
             padding: 20px;
             border-radius: 10px;
             text-align: left;
@@ -115,13 +115,13 @@
 
                 .question-container button.submit {
                     background-color: #000;
-                    color: #fff;
+                    color: #000;
                     border: 2px solid #ff9a1c; /* Vibrant orange border */
                 }
 
                 .question-container button.next {
                     background-color: #000;
-                    color: #fff;
+                    color: #000;
                     border: 2px solid #ff9a1c; /* Vibrant orange border */
                 }
 
@@ -593,7 +593,7 @@
                 .footer-content a:hover {
                     text-decoration: underline;
                 }
-        }
+        
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -734,8 +734,52 @@
             transition: width 0.5s ease;
         }
 
-        }
+        
     
+    </style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        #question-id, #question {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        #options {
+            margin-bottom: 15px;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        #feedback {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        #explanation {
+            margin-top: 15px;
+            font-style: italic;
+        }
     </style>
     <script>
         AOS.init();
@@ -808,33 +852,54 @@
     <div class="content">
         <center><a><h2 style="color:#ff9a1c" id="section1"><br />Teksat<br /></h2></a>  </center>
 
-        
+        <style>
+            body {
+    background-color: white; /* Background color */
+    color: black; /* Default text color */
+}
+
+.card {
+    background-color: #f8f9fa; /* Light gray background for the card */
+    padding: 20px; /* Padding inside the card */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.feedback {
+    margin-top: 10px; /* Space above feedback */
+    font-weight: bold; /* Bold feedback text */
+}
+
+button {
+    margin-top: 10px; /* Space above buttons */
+    padding: 10px 15px; /* Padding inside buttons */
+    background-color: #007bff; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+.question{
+    color:#000
+}
+        </style>
         <br />
-        <div id="section1" class="hidden" data-aos="fade-up">
             <div class="card">
-                <div class="card-body">
-                    <div id="question-id"></div>
-
-                    <div id="question"></div>
-                    <div id="options" class="options-container"></div>
-                    <button id="submit" onclick="checkAnswer()">Submit</button>
-                    <button id="next" onclick="loadNextQuestion()">Next</button>
-
-
-                    <div id="feedback" class="feedback"></div>
-                    <div class= "card">
-                        <div class="card-body">
-                            <div id="explanation"></div>
-
-                        </div>
-
-                    </div>
-
-                    <script src="wwwroot/site.js"></script>
-                </div>
+                <h1>Teksat Quiz</h1>
+                <div id="question-id"></div>
+                <div id="question"></div>
+                <div id="options"></div>
+                <button id="submit">Submit</button>
+                <button id="next">Next</button>
+                <div id="feedback"></div>
+                <div id="explanation"></div>
             </div>
-              
-        </div>
+        
+            <script src="js/site.js"></script>
         <div id="section2" class="hidden" data-aos="fade-up">
             <br />
             <br />
@@ -870,7 +935,7 @@
                 });
             });
         });
-    </script>   @if (User.Identity.IsAuthenticated)
+    </script>  
     {
         <form method="post" asp-page-handler="Logout" class="auth-button">
             <button type="submit" class="btn btn-primary">Logout</button>
@@ -1135,52 +1200,5 @@
     </style>
     
 </div>
-<footer class="site-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <h6>About</h6>
-                <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i>ts as the code wants to be simpleng languages tcript, PHP, Android, SQL and Algorithm.</p>
-            </div>
 
-            <div class="col-xs-6 col-md-3">
-                <h6>Categories</h6>
-                <ul class="footer-links">
-                    <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
-                    <li><a href="http://scanfcode.com/category/front-end-development/">UI Design</a></li>
-                    <li><a href="http://scanfcode.com/category/back-end-development/">PHP</a></li>
-                    <li><a href="http://scanfcode.com/category/java-programming-language/">Java</a></li>
-                    <li><a href="http://scanfcode.com/category/android/">Android</a></li>
-                    <li><a href="http://scanfcode.com/category/templates/">Templates</a></li>
-                </ul>
-            </div>
-
-            <div class="col-xs-6 col-md-3">
-                <h6>Quick Links</h6>
-                <ul class="footer-links">
-                    <li><a href="http://scanfcode.com/about/">About Us</a></li>
-                    <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
-                    <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
-                    <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
-                    <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
-                </ul>
-            </div>
-        </div>
-        <hr>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-sm-6 col-xs-12">
-                <p class="copyright-text">
-                    Copyright &copy; 2017 All Rights Reserved by
-                    <a href="#">Scanfcode</a>.
-                </p>
-            </div>
-
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                
-            </div>
-        </div>
-    </div>
-</footer>
 </html>
