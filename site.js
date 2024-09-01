@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log("Attempting to fetch data.json");
 
-fetch('../data.json')
+fetch('data.json')
     .then(response => {
         console.log("Fetch response status:", response.status);
         if (!response.ok) {
