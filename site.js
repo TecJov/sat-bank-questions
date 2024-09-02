@@ -1,30 +1,35 @@
-﻿console.log("site.js is loaded");
+console.log("site.js is loaded");
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM content loaded');
     let questions = [];
     let currentQuestionIndex = 0;
+    let questionNumber = 1; // Initialize the question number
 
     console.log("Attempting to fetch data.json");
 
-fetch('data.json')
-    .then(response => {
-        console.log("Fetch response status:", response.status);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log("data.json successfully loaded. First question:", data[0]);
-        questions = data;
-        showQuestion();
-    })
-    .catch(error => {
-        console.error('Error loading questions:', error);
-    });
+    fetch('data.json')
+        .then(response => {
+            console.log("Fetch response status:", response.status);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("data.json successfully loaded. First question:", data[0]);
+            questions = data;
+            showQuestion();
+        })
+        .catch(error => {
+            console.error('Error loading questions:', error);
+        });
 
     function showQuestion() {
-        currentQuestionIndex = Math.floor(Math.random() * questions.length);
+        // Update the question number display
+        const questionNumberElement = document.querySelector('.question-number');
+        questionNumberElement.textContent = questionNumber;
+
+        // Show the current question
         const questionData = questions[currentQuestionIndex];
         console.log('Showing question:', questionData);
 
@@ -76,5 +81,9 @@ fetch('data.json')
     }
 
     document.getElementById('submit').addEventListener('click', checkAnswer);
-    document.getElementById('next').addEventListener('click', showQuestion);
+    document.getElementById('next').addEventListener('click', () => {
+        questionNumber++; // Increment the question number
+        currentQuestionIndex = (currentQuestionIndex + 1) % questions.length; // Move to the next question
+        showQuestion();
+    });
 });
