@@ -130,7 +130,7 @@
         }
 
         .question-container {
-            background: linear-gradient(135deg, #FFA500 0%, #808080 100%);
+            background: linear-gradient(135deg, #4ea6e9 0%, #808080 100%);
             color: white;
             border-radius: 10px;
             padding: 20px;
@@ -184,7 +184,7 @@
                 display: inline-block;
                 padding: 10px 20px;
                 margin: 5px;
-                border: 2px solid #fd7e14;
+                border: 2px solid #2a61e2;
                 border-radius: 5px;
                 cursor: pointer;
                 background-color: #f0f0f0;
@@ -193,15 +193,15 @@
 
                 /* Change background color on hover */
                 input[type="radio"] + label:hover {
-                    background-color: #fd7e14;
+                    background-color: #2a61e2;
                     color: white;
                 }
 
             /* Style selected radio button */
             input[type="radio"]:checked + label {
-                background-color: #fd7e14;
+                background-color: #2a61e2;
                 color: white;
-                border: 2px solid #e8a56d;
+                border: 2px solid #73a6f1;
             }
 
         .options-container {
@@ -385,6 +385,11 @@
 }
 
 
+        .modal-dialog {
+            display: flex;
+            align-items: center;
+            min-height: calc(100% - 1rem);
+        }
 
 .nav-left {
     font-size: 1.2em;
@@ -403,14 +408,35 @@
     font-size: 1em;
 }
 
-.nav-right .nav-button:hover {
-    text-decoration: underline;
+.nav-button {
+    background-color: #007bff; /* Bootstrap primary blue */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Top/bottom and left/right padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
+}
+
+.nav-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.nav-button:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); /* Add a blue shadow on focus */
 }
 
 .divider {
     border-bottom: 2px dotted #333333;
     margin: 0 20px;
+    display: flex;
+    width: 100%;
 }
+
 
 .container-fluid {
     padding: 20px;
@@ -492,17 +518,140 @@
 }
 
     </style>
+    <style>
+        .stopwatch-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        #stopwatch {
+            margin-bottom: 0;
+        }
+        .gear-button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            color:#878787
+        }
+        .info-list {
+    list-style-type: none; /* Remove default list styling */
+    padding-left: 0; /* Remove padding */
+}
+
+.info-list > li {
+    margin-bottom: 15px; /* Space between list items */
+}
+
+.info-list ul {
+    padding-left: 20px; /* Indent nested lists */
+    margin-top: 5px; /* Space above nested lists */
+}
+
+.info-list li strong {
+    color: #007bff; /* Use a blue color for headings */
+}
+    </style>
     <div class="content">
+        <div class="modal fade" id="stopwatchModal" tabindex="-1" aria-labelledby="stopwatchModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="stopwatchModalLabel">Stopwatch Controls</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <button id="startBtn" class="btn btn-success">Start</button>
+                        <button id="stopBtn" class="btn btn-warning">Stop</button>
+                        <button id="resetBtn" class="btn btn-danger">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="infoModalLabel">How to Use This Website</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Welcome to our Digital SAT Practice Platform! Here's a quick guide to help you get started:</p>
+                        
+                        <ol class="info-list">
+                            <li><strong>Question Display:</strong> 
+                                <ul>
+                                    <li>Each question is sourced from the official Educator Question Bank.</li>
+                                    <li>Questions are displayed with their unique Question ID for easy reference.</li>
+                                </ul>
+                            </li>
+                            
+                            <li><strong>Stopwatch:</strong>
+                                <ul>
+                                    <li>Use the stopwatch to time your responses and practice managing your time per question.</li>
+                                    <li>Click the gear icon next to the stopwatch to start, stop, or reset the timer.</li>
+                                </ul>
+                            </li>
+                            
+                            <li><strong>Question Navigation:</strong>
+                                <ul>
+                                    <li>Click the "Next" button to move to the next question.</li>
+                                    <li>Questions continue indefinitely, allowing for unlimited practice.</li>
+                                </ul>
+                            </li>
+                            
+                            <li><strong>Question Counter:</strong>
+                                <ul>
+                                    <li>Keep track of how many questions you've completed.</li>
+                                    <li>Use this to monitor your progress and set practice goals.</li>
+                                </ul>
+                            </li>
+                            
+                            <li><strong>Answer Checking:</strong>
+                                <ul>
+                                    <li>Select your answer and click "Submit" to check if it's correct.</li>
+                                    <li>Receive immediate feedback and an explanation to enhance your learning.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        
+                        <p>Feel free to explore and practice at your own pace. Happy studying!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
         <div class="navbar">
             <div class="nav-left">
                 Practice: Reading and Writing
             </div>
             <div class="nav-center">
-                0:00
+                <div class="container mt-5">
+                    <div class="stopwatch-container">
+                        <div id="stopwatch">00:00</div>
+                        <button class="gear-button" data-bs-toggle="modal" data-bs-target="#stopwatchModal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-gear-wide-connected" viewBox="0 0 16 16">
+                                <path d="M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622-.434zM12.973 8.5H8.25l-2.834 3.779A4.998 4.998 0 0 0 12.973 8.5m0-1a4.998 4.998 0 0 0-7.557-3.779l2.834 3.78zM5.048 3.967l-.087.065zm-.431.355A4.98 4.98 0 0 0 3.002 8c0 1.455.622 2.765 1.615 3.678L7.375 8zm.344 7.646.087.065z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            
+            
             </div>
             <div class="nav-right">
-                <button class="nav-button">Annotate</button>
-                <button class="nav-button">More</button>
+                <style>
+                    .highlight {
+    background-color: yellow;
+}
+
+#question.annotating {
+    cursor: text;
+    user-select: text;
+}
+                </style>
+                <button class="nav-button" id="annotateBtn">Annotate</button>
+                <button class="nav-button" data-bs-toggle="modal" data-bs-target="#infoModal">How to use</button>
             </div>
         </div>
         <div class="divider"></div>
@@ -533,7 +682,7 @@
     justify-content: space-between;
     
     align-items: center;
-    padding: 10px 20px;
+    padding: 5px 5px;
     background-color: #e4ecfc;
     font-weight: bold;
     
@@ -566,10 +715,10 @@
 }
 
 .nav-center {
-    font-size: 1.2em;
+    font-size: 19px;
 }
 
-.nav-right .nav-button {
+.nav-right {
     margin-left: 10px;
     background-color: transparent;
     border: none;
@@ -578,8 +727,28 @@
     font-size: 1em;
 }
 
-.nav-right .nav-button:hover {
-    text-decoration: underline;
+.nav-button {
+    background: linear-gradient(135deg, #007bff, #0056b3); /* Gradient background */
+    color: white; /* Text color */
+    padding: 12px 24px; /* Increased padding for a larger button */
+    border: none; /* No border */
+    border-radius: 8px; /* More rounded corners */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2); /* Subtle shadow for depth */
+    outline: none; /* Remove default focus outline */
+}
+
+.nav-button:hover {
+    background: linear-gradient(135deg, #0056b3, #004494); /* Darker gradient on hover */
+    transform: translateY(-2px); /* Slightly lift the button on hover */
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3); /* Enhanced shadow effect on hover */
+}
+
+.nav-button:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); /* Add a blue shadow on focus */
 }
 
 .divider {
@@ -779,7 +948,85 @@
             });
         });
     </script>  
-    
+    <script>
+        let minutes = 0;
+        let seconds = 0;
+        let intervalId = null;
+
+        const stopwatchElement = document.getElementById('stopwatch');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const modal = new bootstrap.Modal(document.getElementById('stopwatchModal'));
+
+        function updateStopwatch() {
+            seconds++;
+            if (seconds === 60) {
+                seconds = 0;
+                minutes++;
+            }
+            stopwatchElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        startBtn.addEventListener('click', () => {
+            if (intervalId === null) {
+                intervalId = setInterval(updateStopwatch, 1000);
+            }
+            modal.hide();
+        });
+
+        stopBtn.addEventListener('click', () => {
+            if (intervalId !== null) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+            modal.hide();
+        });
+
+        resetBtn.addEventListener('click', () => {
+            clearInterval(intervalId);
+            intervalId = null;
+            minutes = 0;
+            seconds = 0;
+            stopwatchElement.textContent = '00:00';
+            modal.hide();
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const annotateBtn = document.getElementById('annotateBtn');
+    const questionDiv = document.getElementById('question');
+    let isAnnotating = false;
+
+    annotateBtn.addEventListener('click', toggleAnnotation);
+
+    function toggleAnnotation() {
+        isAnnotating = !isAnnotating;
+        questionDiv.classList.toggle('annotating', isAnnotating);
+        
+        if (isAnnotating) {
+            annotateBtn.textContent = 'Stop Annotating';
+            questionDiv.addEventListener('mouseup', highlightSelection);
+        } else {
+            annotateBtn.textContent = 'Annotate';
+            questionDiv.removeEventListener('mouseup', highlightSelection);
+        }
+    }
+
+    function highlightSelection() {
+        const selection = window.getSelection();
+        if (selection.rangeCount > 0) {
+            const range = selection.getRangeAt(0);
+            if (!range.collapsed) {
+                const span = document.createElement('span');
+                span.className = 'highlight';
+                range.surroundContents(span);
+                selection.removeAllRanges();
+            }
+        }
+    }
+});
+    </script>
 </body>
 <div style="display: flex; justify-content: center;">
     <style>
