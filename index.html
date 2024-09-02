@@ -53,24 +53,7 @@
             margin-right: 10px;
         }
 
-        .button-container {
-            margin-top: 20px;
-        }
-
-            .button-container button {
-                background-color: orange;
-                color: black;
-                border: none;
-                padding: 10px 20px;
-                margin: 5px;
-                cursor: pointer;
-                border-radius: 5px;
-                font-size: 1em;
-            }
-
-                .button-container button:hover {
-                    background-color: #ff6600;
-                }
+        
 
         #feedback {
             margin-top: 20px;
@@ -225,33 +208,7 @@
                 transform: scale(1.2); /* Increase the size of the radio button */
             }
 
-        button {
-            background-color: #ff9a1c; /* Green background */
-            color: white; /* White text */
-            padding: 12px 20px; /* Padding for the button */
-            border: none; /* Remove border */
-            border-radius: 5px; /* Rounded corners */
-            cursor: pointer; /* Pointer cursor on hover */
-            font-size: 1em; /* Adjust font size */
-            margin: 10px 5px; /* Spacing around buttons */
-            transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
-        }
-
-            button:hover {
-                background-color: #fd7e14; /* Darker green on hover */
-                transform: scale(1.05); /* Slightly larger on hover */
-            }
-
-            button:active {
-                background-color: #ff9a1c; /* Even darker green when clicked */
-                transform: scale(1); /* Return to normal size */
-            }
-
-            button:disabled {
-                background-color: #ddd; /* Grey background when disabled */
-                color: #666; /* Darker text when disabled */
-                cursor: not-allowed; /* Not-allowed cursor when disabled */
-            }
+        
 
         #progress-container {
             border-radius: 5px;
@@ -286,19 +243,7 @@
         #options {
             margin-bottom: 15px;
         }
-        button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
+        
         #feedback {
             font-weight: bold;
             margin-top: 15px;
@@ -401,9 +346,10 @@
 
 .nav-right .nav-button {
     margin-left: 10px;
+    margin-right: 20px;
     background-color: transparent;
     border: none;
-    color: #0000ff;
+    color: white;
     cursor: pointer;
     font-size: 1em;
 }
@@ -411,10 +357,10 @@
 .nav-button {
     background-color: #007bff; /* Bootstrap primary blue */
     color: white; /* Text color */
-    padding: 10px 20px; /* Top/bottom and left/right padding */
+    padding: 10px 10px; /* Top/bottom and left/right padding */
     border: none; /* No border */
     border-radius: 5px; /* Rounded corners */
-    font-size: 16px; /* Font size */
+    font-size: 12px; /* Font size */
     font-weight: bold; /* Bold text */
     cursor: pointer; /* Pointer cursor on hover */
     transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
@@ -668,7 +614,7 @@
 }
 
 .navbar {
-    display: flex;
+    display: flexbox;
     justify-content: space-between;
     align-items: center;
     background-color: #f8f9fa;
@@ -696,13 +642,14 @@
     position: fixed;
     bottom:0;
     width: 100%;
+    height:70px;
 }
 .bbar {
     display: flex;
     justify-content: space-between;
     
     align-items: center;
-    padding: 10px 20px;
+    padding: 0px 20px;
     background-color: #e4ecfc;
     font-weight: bold;
     
@@ -712,6 +659,7 @@
 
 .nav-left {
     font-size: 1.2em;
+    padding-left:15px;
 }
 
 .nav-center {
@@ -730,7 +678,7 @@
 .nav-button {
     background: linear-gradient(135deg, #007bff, #0056b3); /* Gradient background */
     color: white; /* Text color */
-    padding: 12px 24px; /* Increased padding for a larger button */
+    padding: 9px 15px; /* Increased padding for a larger button */
     border: none; /* No border */
     border-radius: 8px; /* More rounded corners */
     font-size: 16px; /* Font size */
@@ -861,13 +809,58 @@
                 </div>
                 <div class="vertical-line"></div>
                 <br />
+                <style>
+                  
+.bookmark {
+    border: none; /* Remove any border */
+    outline: none; /* Remove the focus outline */
+    box-shadow: none; /* Remove any box shadow */
+    background-color: transparent; /* Optional: Set background to transparent if needed */
+    color:white;
+    color: white; /* Change the icon color to white */
+    stroke: black; /* Set the border color to black */
+    stroke-width: 1px; /* Adjust the border thickness as needed */
+}
+
+.bookmark:focus {
+    outline: none; /* Ensure no outline on focus */
+    box-shadow: none; /* Ensure no shadow on focus */
+}
+.strikethrough {
+    text-decoration: line-through;
+}
+.option-checkbox {
+    width: 20px; /* Set a larger width for better visibility */
+    height: 20px; /* Set a larger height for better visibility */
+    margin-right: 10px; /* Space between the checkbox and the option text */
+    cursor: pointer; /* Change cursor to pointer when hovering over checkbox */
+}
+
+label {
+    display: flex; /* Use flexbox for better alignment */
+    align-items: center; /* Center align items vertically */
+    margin-bottom: 10px; /* Space between each option */
+}
+
+.strikethrough {
+    text-decoration: line-through; /* Line-through effect for strikethrough */
+    color: gray; /* Optional: Change color of strikethrough text */
+}
+                </style>
 
                 <!-- Right column for options and buttons -->
                 <div class="col-md-6 smaller-text text-left">
                     <!-- Gray bar with question number and Mark for Review -->
                     <div class="gray-bar">
                         <div class="question-number">1</div>
-                        <div class="mark-review">Mark for Review</div>
+                        <button class = "bookmark">
+
+                       
+                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
+                                <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
+                            </svg>
+                        </button>
+                        <div class="mark-review">&emsp;Mark for Review</div>
                     </div>
                     
                     <div id="options" class="full-width">
@@ -893,16 +886,42 @@
                     <div id="explanation" class="mt-3 full-width"></div>
                 </div>
             </div>
+            <style>
+                .jokey {
+    font-family: 'Arial', sans-serif; /* Clean and modern font */
+    font-size: 100%; /* Slightly larger font size for emphasis */
+    color: #333; /* Dark gray color for a professional look */
+    text-align: center; /* Center align the text */
+    text-transform: none; /* Keep original case for a natural feel */
+    letter-spacing: 0.5px; /* Slight spacing for readability */
+    line-height: 1.5; /* Improved line height for better readability */
+    background: linear-gradient(90deg, #6a11cb, #2575fc); /* Gradient background */
+    -webkit-background-clip: text; /* Clip background to text */
+    -webkit-text-fill-color: transparent; /* Make text color transparent to show gradient */
+    animation: fadeIn 1s ease-in-out; /* Fade-in animation */
+}
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+            </style>
 
             <div class="divider"></div>
             <div class="bbar">
                 <div class="nav-left">
-                    Student
+                    SAT Educator Question Bank 
                 </div>
-                <div class="nav-center">
-                    Teksat
+                <div class = "jokey">
+                    <div class="nav-center">
+                        Teksat
+                    </div>
                 </div>
+                
                 <div class="nav-right">
                     <button id="submit" class="nav-button">Submit</button>
                         <button id="next" class="nav-button">Next</button>
@@ -911,7 +930,7 @@
 
         </div>
         
-            <script src="site.js"></script>
+            <script src="js/site.js"></script>
         <div id="section2" class="hidden" data-aos="fade-up">
             <br />
             <br />
@@ -1024,6 +1043,39 @@
                 selection.removeAllRanges();
             }
         }
+    }
+});
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const bookmarkButton = document.querySelector('.bookmark');
+    const optionsContainer = document.getElementById('options');
+    let isBookmarkActive = false;
+
+    bookmarkButton.addEventListener('click', () => {
+        isBookmarkActive = !isBookmarkActive;
+        toggleCheckboxes(isBookmarkActive);
+    });
+
+    function toggleCheckboxes(show) {
+        const labels = optionsContainer.querySelectorAll('label');
+        labels.forEach(label => {
+            if (show) {
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.className = 'option-checkbox';
+                checkbox.addEventListener('change', () => {
+                    label.classList.toggle('strikethrough', checkbox.checked);
+                });
+                label.insertBefore(checkbox, label.firstChild);
+            } else {
+                const checkbox = label.querySelector('.option-checkbox');
+                if (checkbox) {
+                    label.classList.remove('strikethrough');
+                    label.removeChild(checkbox);
+                }
+            }
+        });
     }
 });
     </script>
