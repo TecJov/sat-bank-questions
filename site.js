@@ -1,9 +1,13 @@
 console.log("site.js is loaded");
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM content loaded');
     let questions = [];
     let currentQuestionIndex = 0;
-    let questionNumber = 1; // Initialize the question number
+    let questionNumber = 1;
+    let correctAnswers = 0;
+    let questionsAttempted = 0;
+    let currentQuestionAnswered = false;
 
     console.log("Attempting to fetch data.json");
 
@@ -25,11 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     function showQuestion() {
-        // Update the question number display
+        currentQuestionAnswered = false;
         const questionNumberElement = document.querySelector('.question-number');
         questionNumberElement.textContent = questionNumber;
 
-        // Show the current question
         const questionData = questions[currentQuestionIndex];
         console.log('Showing question:', questionData);
 
@@ -62,6 +65,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const feedbackElement = document.getElementById('feedback');
             const explanationElement = document.getElementById('explanation');
+
+            if (!currentQuestionAnswered) {
+                questionsAttempted++;
+                if (userAnswer === questionData.Answer) {
+                    correctAnswers++;
+                }
+                currentQuestionAnswered = true;
+            }
+
             if (userAnswer === questionData.Answer) {
                 feedbackElement.textContent = 'Correct!';
                 feedbackElement.style.color = 'green';
@@ -80,10 +92,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function calculateScore() {
+        if (questionsAttempted === 0) {
+            alert('Please answer at least one question before calculating the score.');
+            return;
+        }
+
+        const rawScore = correctAnswers / questionsAttempted;
+        let scaledScore = Math.round(rawScore * 800) + 60;
+        scaledScore = Math.min(scaledScore, 800); // Cap the score at 800
+
+        const scoreResultElement = document.getElementById('scoreResult');
+        scoreResultElement.textContent = `Your score: ${scaledScore} (${correctAnswers} out of ${questionsAttempted} correct)`;
+
+        // Space for custom calculations
+        const customCalcResultElement = document.getElementById('customCalcResult');
+        customCalcResultElement.textContent = `Raw score: ${rawScore.toFixed(2)}, Scaled score: ${scaledScore}`;
+    }
+
     document.getElementById('submit').addEventListener('click', checkAnswer);
     document.getElementById('next').addEventListener('click', () => {
-        questionNumber++; // Increment the question number
-        currentQuestionIndex = (currentQuestionIndex + 1) % questions.length; // Move to the next question
+        questionNumber++;
+        currentQuestionIndex = (currentQuestionIndex + 1) % questions.length;
         showQuestion();
     });
+    document.getElementById('calculateScoreBtn').addEventListener('click', calculateScore);
 });
