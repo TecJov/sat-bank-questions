@@ -559,6 +559,12 @@
                                     <li>Receive immediate feedback and an explanation to enhance your learning.</li>
                                 </ul>
                             </li>
+                            <li><strong>Score Calculator:</strong>
+                                <ul>
+                                    <li>You will receive a realistic SAT English Score.</li>
+                                    <li>Still in development, not always accurate</li>
+                                </ul>
+                            </li>
                         </ol>
                         
                         <p>Feel free to explore and practice at your own pace. Happy studying!</p>
@@ -596,6 +602,9 @@
     user-select: text;
 }
                 </style>
+                
+
+
                 <button class="nav-button" id="annotateBtn">Annotate</button>
                 <button class="nav-button" data-bs-toggle="modal" data-bs-target="#infoModal">How to use</button>
             </div>
@@ -918,11 +927,15 @@ label {
                 </div>
                 <div class = "jokey">
                     <div class="nav-center">
-                        Teksat
+                        <div id="scoreResult"></div>
+
                     </div>
                 </div>
                 
                 <div class="nav-right">
+
+                    <button class="nav-button" id="calculateScoreBtn">Calculate Score</button>
+
                     <button id="submit" class="nav-button">Submit</button>
                         <button id="next" class="nav-button">Next</button>
                 </div>
