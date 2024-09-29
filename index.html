@@ -3,1021 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Single Page Website</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>SAT Reading and Writing Practice</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script defer src="js/script.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $("#teksat-welcome-modal").modal('show');
-    });
-</script>
-    <script>
-        AOS.init();
-    </script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
     <style>
         body {
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            margin: 0;
+            padding: 0;
         }
-
-        h1 {
-            color: orange;
+        .navbar, .bbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 5px;
+            background-color: #e4ecfc;
+            font-weight: bold;
         }
-
-        .question-container {
-            background-color: #333;
-            padding: 20px;
-            border-radius: 10px;
-            display: inline-block;
-            text-align: left;
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
         }
-
-            .question-container p {
-                font-size: 1.2em;
-            }
-
-        .choices-container div {
-            margin: 10px 0;
+        .bbar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 70px;
         }
-
-        .choices-container input[type="radio"] {
-            margin-right: 10px;
-        }
-
-        
-
-        #feedback {
-            margin-top: 20px;
+        .nav-left {
             font-size: 1.2em;
+            padding-left: 15px;
         }
-
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
-            margin: 20px;
-        }
-
-        .question-container {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            font-size: 1.1em;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 20px auto;
-        }
-
-            footer{
-            background-color: #f8f9fa;
-            padding: 20px 0;
-            border-top: 1px solid #e9ecef;
-        }
-
-        .container {
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .footer-content {
-            text-align: center;
-            color: #6c757d;
-        }
-
-            .footer-content a {
-                color: #007bff;
-                text-decoration: none;
-            }
-
-                .footer-content a:hover {
-                    text-decoration: underline;
-                }
-        
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
-            margin: 20px;
-        }
-
-        .question-container {
-            background: linear-gradient(135deg, #4ea6e9 0%, #808080 100%);
-            color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            font-size: 1em;
-            line-height: 1.6;
-            max-width: 1000px;
-            margin: 20px auto;
-        }
-
-        #question{
-            padding: 18px;
-            max-width: 1500px;
-            margin: 0 auto;
-            color: black; /* White background for the question container */
-            border-radius: 8px;
+        .nav-center {
             font-size: 19px;
         }
-
-       
-
-        #options {
-            padding: 18px;
-            max-width: 1500px;
-            margin: 0 auto;
-            color: black; /* White background for the question container */
-            border-radius: 19px;
+        .nav-right {
+            margin-right: 15px;
         }
-        #feedback {
-            padding: 20px;
-            max-width: 1500px;
-            margin: 0 auto;
-            color: black; /* White background for the question container */
-            border-radius: 18px;
-        }
-
-        #explanation {
-            padding: 20px;
-            max-width: 1500px;
-            margin: 0 auto;
-            color: black; /* White background for the question container */
-            border-radius: 17px;
-        }
-        /* Hide the default radio buttons */
-        input[type="radio"] {
-            display: none;
-        }
-
-            /* Style the labels to look like buttons */
-            input[type="radio"] + label {
-                display: inline-block;
-                padding: 10px 20px;
-                margin: 5px;
-                border: 2px solid #2a61e2;
-                border-radius: 5px;
-                cursor: pointer;
-                background-color: #f0f0f0;
-                transition: background-color 0.3s, color 0.3s;
-            }
-
-                /* Change background color on hover */
-                input[type="radio"] + label:hover {
-                    background-color: #2a61e2;
-                    color: white;
-                }
-
-            /* Style selected radio button */
-            input[type="radio"]:checked + label {
-                background-color: #2a61e2;
-                color: white;
-                border: 2px solid #73a6f1;
-            }
-
-        .options-container {
-            display: flex;
-            justify-content: center; /* Center the options horizontally */
-            gap: 20px; /* Space between each option */
-            margin: 10px 0;
-            flex-wrap: nowrap; /* Prevent wrapping to a new line */
-        }
-
-            .options-container label {
-                display: flex;
-                align-items: center;
-                cursor: pointer;
-                font-size: 1em;
-                margin: 0 10px; /* Adjust spacing around each label if needed */
-            }
-
-            .options-container input[type="radio"] {
-                margin-right: 5px; /* Space between radio button and label */
-                transform: scale(1.2); /* Increase the size of the radio button */
-            }
-
-        
-
-        #progress-container {
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        #progress-bar {
-            transition: width 0.5s ease;
-        }
-
-        
-    
-    </style>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
-        }
-        .card {
-            background-color: white;
+        .nav-button {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 9px 15px;
+            border: none;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 20px;
-            margin-bottom: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+        }
+        .nav-button:hover {
+            background: linear-gradient(135deg, #0056b3, #004494);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+        }
+        .divider {
+            border-bottom: 2px dotted #333333;
+            margin: 0 20px;
+        }
+        .container-fluid {
+            padding: 80px 20px 90px;
+        }
+        .row {
+            display: flex;
+            align-items: start;
+        }
+        .col-md-6 {
+            flex: 0 0 48%;
+            max-width: 48%;
+            padding: 15px;
+        }
+        .vertical-line {
+            width: 1px;
+            background-color: #cccccc;
+            height: 100%;
+            min-height: 450px;
         }
         #question-id, #question {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.1em;
         }
-        #options {
-            margin-bottom: 15px;
+        .gray-bar {
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
         }
-        
-        #feedback {
+        .question-number {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 5px 10px;
+            margin-right: 20px;
             font-weight: bold;
-            margin-top: 15px;
         }
-        #explanation {
-            margin-top: 15px;
-            font-style: italic;
+        .bookmark {
+            background-color: transparent;
+            border: none;
+            color: #000000;
+            cursor: pointer;
+        }
+        #options label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+        #question.annotating {
+            cursor: text;
+            user-select: text;
+        }
+        .strikethrough {
+            text-decoration: line-through;
+            color: gray;
         }
     </style>
-    <script>
-        AOS.init();
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const section3 = document.getElementById('section3');
-            const body = document.body;
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        body.classList.add('scrolled');
-                    } else {
-                        body.classList.remove('scrolled');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            observer.observe(section3);
-        });
-    </script>
 </head>
 <body>
-    <style>
-        #teksat-welcome-modal .modal-body {
-            height: 100vh;
-        }
-    </style>
-    <div class="modal fade" id="teksat-welcome-modal" tabindex="-1" aria-labelledby="teksatWelcomeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="teksatWelcomeModalLabel">Welcome</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="navbar">
+        <div class="nav-left">Practice: Reading and Writing</div>
+        <div class="nav-center">
+            <div id="stopwatch">00:00</div>
+        </div>
+        <div class="nav-right">
+            <button class="nav-button" id="annotateBtn">Annotate</button>
+            <button class="nav-button" id="infoBtn">How to use</button>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="question-id">1</div>
+                <div id="question">
+                    In recommending Bao Phi's collection *Sông I Sing*, a librarian noted that pieces by the spoken-word poet don't lose their ______ nature when printed: the language has the same pleasant musical quality on the page as it does when performed by Phi.
                 </div>
-                <div class="modal-body d-flex align-items-center justify-content-center">
-                    <h1>Welcome to Teksat</h1>
+            </div>
+            <div class="vertical-line"></div>
+            <div class="col-md-6">
+                <div class="gray-bar">
+                    <div class="question-number">1</div>
+                    <button class="bookmark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
+                            <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
+                        </svg>
+                    </button>
+                    <div class="mark-review">&emsp;Mark for Review</div>
                 </div>
+                <div id="options">
+                    <label><input type="radio" name="option" value="A"> A) scholarly</label>
+                    <label><input type="radio" name="option" value="B"> B) melodic</label>
+                    <label><input type="radio" name="option" value="C"> C) jarring</label>
+                    <label><input type="radio" name="option" value="D"> D) personal</label>
+                </div>
+                <div id="feedback"></div>
+                <div id="explanation"></div>
             </div>
         </div>
     </div>
-    
 
-    <div class="sidebar" data-aos="fade-up">
-        <ul>
-            <li>
-                <a href="#section1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
-                        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
-                        <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z" />
-                    </svg>
-                </a>
-            </li>
-            <li>
-                <a href="#section2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-bag-heart" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1M8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132" />
-                    </svg>
-                </a>
-            </li>
-            
-            <li>
-                <a href="#section3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-info-square" viewBox="0 0 16 16">
-                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
-                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
-                    </svg>
-                </a>
-            </li>
-           
-           
-            <style>
-                .thien {
-                    color: white;
-                }
-            </style>
-            <li>
-
-                <a href="https://www.linkedin.com/in/njovan/" target="_blank" class="thien">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
-                    </svg>
-                </a>
-
-            </li>
-        </ul>
-    </div>
-    <style>
-        body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    color: #000000;
-    margin: 0;
-    padding: 0;
-}
-
-
-        .modal-dialog {
-            display: flex;
-            align-items: center;
-            min-height: calc(100% - 1rem);
-        }
-
-.nav-left {
-    font-size: 1.2em;
-}
-
-.nav-center {
-    font-size: 1.2em;
-}
-
-.nav-right .nav-button {
-    margin-left: 10px;
-    margin-right: 20px;
-    background-color: transparent;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 1em;
-}
-
-.nav-button {
-    background-color: #007bff; /* Bootstrap primary blue */
-    color: white; /* Text color */
-    padding: 10px 10px; /* Top/bottom and left/right padding */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    font-size: 12px; /* Font size */
-    font-weight: bold; /* Bold text */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
-}
-
-.nav-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    transform: scale(1.05); /* Slightly enlarge the button on hover */
-}
-
-.nav-button:focus {
-    outline: none; /* Remove default focus outline */
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); /* Add a blue shadow on focus */
-}
-
-.divider {
-    border-bottom: 2px dotted #333333;
-    margin: 0 20px;
-    display: flex;
-    width: 100%;
-}
-
-
-.container-fluid {
-    padding: 20px;
-}
-
-.row {
-    display: flex;
-}
-
-.col-md-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
-    padding: 15px;
-}
-
-.smaller-text {
-    font-size: 1em;
-}
-
-.text-left {
-    text-align: left;
-}
-
-#question-id {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-#question {
-    margin-bottom: 20px;
-    font-size: 1.1em;
-}
-
-.gray-bar {
-    background-color: #f0f0f0;
-    padding: 10px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-}
-
-.question-number {
-    background-color: #000000;
-    color: #ffffff;
-    padding: 5px 10px;
-    margin-right: 20px;
-    font-weight: bold;
-}
-
-.mark-review {
-    color: #000000;
-    font-size: 1em;
-}
-
-#options {
-    margin-bottom: 20px;
-}
-
-#options label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-.btn {
-    padding: 5px 10px;
-    font-size: 0.9em;
-}
-
-.mt-3 {
-    margin-top: 1rem;
-}
-
-.me-2 {
-    margin-right: 0.5rem;
-}
-
-.full-width {
-    width: 100%;
-}
-
-    </style>
-    <style>
-        .stopwatch-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        #stopwatch {
-            margin-bottom: 0;
-        }
-        .gear-button {
-            background: none;
-            border: none;
-            padding: 0;
-            cursor: pointer;
-            color:#878787
-        }
-        .info-list {
-    list-style-type: none; /* Remove default list styling */
-    padding-left: 0; /* Remove padding */
-}
-
-.info-list > li {
-    margin-bottom: 15px; /* Space between list items */
-}
-
-.info-list ul {
-    padding-left: 20px; /* Indent nested lists */
-    margin-top: 5px; /* Space above nested lists */
-}
-
-.info-list li strong {
-    color: #007bff; /* Use a blue color for headings */
-}
-    </style>
-    <div class="content">
-        
-        
-          <!-- Welcome Modal -->
-
-        <div class="modal fade" id="stopwatchModal" tabindex="-1" aria-labelledby="stopwatchModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="stopwatchModalLabel">Stopwatch Controls</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <button id="startBtn" class="btn btn-success">Start</button>
-                        <button id="stopBtn" class="btn btn-warning">Stop</button>
-                        <button id="resetBtn" class="btn btn-danger">Reset</button>
-                    </div>
-                </div>
-            </div>
+    <div class="bbar">
+        <div class="nav-left">SAT Educator Question Bank</div>
+        <div class="nav-center">
+            <div id="scoreResult"></div>
         </div>
-        <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="infoModalLabel">How to Use This Website</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Welcome to our Digital SAT Practice Platform! Here's a quick guide to help you get started:</p>
-                        
-                        <ol class="info-list">
-                            <li><strong>Question Display:</strong> 
-                                <ul>
-                                    <li>Each question is sourced from the official Educator Question Bank.</li>
-                                    <li>Questions are displayed with their unique Question ID for easy reference.</li>
-                                </ul>
-                            </li>
-                            
-                            <li><strong>Stopwatch:</strong>
-                                <ul>
-                                    <li>Use the stopwatch to time your responses and practice managing your time per question.</li>
-                                    <li>Click the gear icon next to the stopwatch to start, stop, or reset the timer.</li>
-                                </ul>
-                            </li>
-                            
-                            <li><strong>Question Navigation:</strong>
-                                <ul>
-                                    <li>Click the "Next" button to move to the next question.</li>
-                                    <li>Questions continue indefinitely, allowing for unlimited practice.</li>
-                                </ul>
-                            </li>
-                            
-                            <li><strong>Question Counter:</strong>
-                                <ul>
-                                    <li>Keep track of how many questions you've completed.</li>
-                                    <li>Use this to monitor your progress and set practice goals.</li>
-                                </ul>
-                            </li>
-                            
-                            <li><strong>Answer Checking:</strong>
-                                <ul>
-                                    <li>Select your answer and click "Submit" to check if it's correct.</li>
-                                    <li>Receive immediate feedback and an explanation to enhance your learning.</li>
-                                </ul>
-                            </li>
-                            <li><strong>Score Calculator:</strong>
-                                <ul>
-                                    <li>You will receive a realistic SAT English Score.</li>
-                                    <li>Still in development, not always accurate</li>
-                                </ul>
-                            </li>
-                        </ol>
-                        
-                        <p>Feel free to explore and practice at your own pace. Happy studying!</p>
-                    </div>
-                </div>
-            </div>
+        <div class="nav-right">
+            <button class="nav-button" id="calculateScoreBtn">Calculate Score</button>
+            <button class="nav-button" id="submit">Submit</button>
+            <button class="nav-button" id="next">Next</button>
         </div>
-    
-        <div class="navbar">
-            <div class="nav-left">
-                Practice: Reading and Writing
-            </div>
-            <div class="nav-center">
-                <div class="container mt-5">
-                    <div class="stopwatch-container">
-                        <div id="stopwatch">00:00</div>
-                        <button class="gear-button" data-bs-toggle="modal" data-bs-target="#stopwatchModal">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-gear-wide-connected" viewBox="0 0 16 16">
-                                <path d="M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622-.434zM12.973 8.5H8.25l-2.834 3.779A4.998 4.998 0 0 0 12.973 8.5m0-1a4.998 4.998 0 0 0-7.557-3.779l2.834 3.78zM5.048 3.967l-.087.065zm-.431.355A4.98 4.98 0 0 0 3.002 8c0 1.455.622 2.765 1.615 3.678L7.375 8zm.344 7.646.087.065z"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            
-            
-            </div>
-            <div class="nav-right">
-                <style>
-                    .highlight {
-    background-color: yellow;
-}
-
-#question.annotating {
-    cursor: text;
-    user-select: text;
-}
-                </style>
-                
-
-
-                <button class="nav-button" id="annotateBtn">Annotate</button>
-                <button class="nav-button" data-bs-toggle="modal" data-bs-target="#infoModal">How to use</button>
-            </div>
-        </div>
-        <div class="divider"></div>
-
-      
-        <br />
-        <style>
-               body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    color: #000000;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar {
-    display: flexbox;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f8f9fa;
-    font-weight: bold;
-    position: fixed;
-    top:0;
-    width: 100%;
-}
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    
-    align-items: center;
-    padding: 5px 5px;
-    background-color: #e4ecfc;
-    font-weight: bold;
-    
-}
-.bbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f8f9fa;
-    font-weight: bold;
-    position: fixed;
-    bottom:0;
-    width: 100%;
-    height:70px;
-}
-.bbar {
-    display: flex;
-    justify-content: space-between;
-    
-    align-items: center;
-    padding: 0px 20px;
-    background-color: #e4ecfc;
-    font-weight: bold;
-    
-}
-
-
-
-.nav-left {
-    font-size: 1.2em;
-    padding-left:15px;
-}
-
-.nav-center {
-    font-size: 19px;
-}
-
-.nav-right {
-    margin-left: 10px;
-    background-color: transparent;
-    border: none;
-    color: #0000ff;
-    cursor: pointer;
-    font-size: 1em;
-}
-
-.nav-button {
-    background: linear-gradient(135deg, #007bff, #0056b3); /* Gradient background */
-    color: white; /* Text color */
-    padding: 9px 15px; /* Increased padding for a larger button */
-    border: none; /* No border */
-    border-radius: 8px; /* More rounded corners */
-    font-size: 16px; /* Font size */
-    font-weight: bold; /* Bold text */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2); /* Subtle shadow for depth */
-    outline: none; /* Remove default focus outline */
-}
-
-.nav-button:hover {
-    background: linear-gradient(135deg, #0056b3, #004494); /* Darker gradient on hover */
-    transform: translateY(-2px); /* Slightly lift the button on hover */
-    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3); /* Enhanced shadow effect on hover */
-}
-
-.nav-button:focus {
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5); /* Add a blue shadow on focus */
-}
-
-.divider {
-    border-bottom: 2px dotted #333333;
-    margin: 0 20px;
-}
-
-.container-fluid {
-    padding: 20px;
-}
-
-.row {
-    display: flex;
-    align-items: start;
-}
-
-.col-md-6 {
-    flex: 0 0 48%;
-    max-width: 48%;
-    padding: 15px;
-}
-
-.vertical-line {
-    width: 1px;  /* Fixed width of 1 pixel */
-    background-color: #cccccc;
-    height: 100%;  /* Full height of the parent */
-    min-height: 450px; /* Minimum height */
-}
-
-.smaller-text {
-    font-size: 1em;
-}
-
-.text-left {
-    text-align: left;
-}
-
-#question-id {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-#question {
-    margin-bottom: 20px;
-    font-size: 1.1em;
-}
-
-.gray-bar {
-    background-color: #f0f0f0;
-    padding: 10px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-}
-
-.question-number {
-    background-color: #000000;
-    color: #ffffff;
-    padding: 5px 10px;
-    margin-right: 20px;
-    font-weight: bold;
-}
-
-.mark-review {
-    color: #000000;
-    font-size: 1em;
-}
-
-#options {
-    margin-bottom: 20px;
-}
-
-#options label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-.btn {
-    padding: 5px 10px;
-    font-size: 0.9em;
-}
-
-.mt-3 {
-    margin-top: 1rem;
-}
-
-.me-2 {
-    margin-right: 0.5rem;
-}
-
-.full-width {
-    width: 100%;
-}
-
-
-
-          </style>
-          
-          
-        
-        <!-- Main Content -->
-        <div class="container-fluid">
-            <div class="row">
-                <!-- Left column for question -->
-                <div class="col-md-6 smaller-text text-left">
-                    <div id="question-id" class="full-width">1</div>
-                    <div id="question" class="full-width">
-                        In recommending Bao Phi’s collection *Sông I Sing*, a librarian noted that pieces by the spoken-word poet don’t lose their ______ nature when printed: the language has the same pleasant musical quality on the page as it does when performed by Phi.
-                    </div>
-                </div>
-                <div class="vertical-line"></div>
-                <br />
-                <style>
-                  
-.bookmark {
-    border: none; /* Remove any border */
-    outline: none; /* Remove the focus outline */
-    box-shadow: none; /* Remove any box shadow */
-    background-color: transparent; /* Optional: Set background to transparent if needed */
-    color:white;
-    color: white; /* Change the icon color to white */
-    stroke: black; /* Set the border color to black */
-    stroke-width: 1px; /* Adjust the border thickness as needed */
-}
-
-.bookmark:focus {
-    outline: none; /* Ensure no outline on focus */
-    box-shadow: none; /* Ensure no shadow on focus */
-}
-.strikethrough {
-    text-decoration: line-through;
-}
-.option-checkbox {
-    width: 20px; /* Set a larger width for better visibility */
-    height: 20px; /* Set a larger height for better visibility */
-    margin-right: 10px; /* Space between the checkbox and the option text */
-    cursor: pointer; /* Change cursor to pointer when hovering over checkbox */
-}
-
-label {
-    display: flex; /* Use flexbox for better alignment */
-    align-items: center; /* Center align items vertically */
-    margin-bottom: 10px; /* Space between each option */
-}
-
-.strikethrough {
-    text-decoration: line-through; /* Line-through effect for strikethrough */
-    color: gray; /* Optional: Change color of strikethrough text */
-}
-                </style>
-
-                <!-- Right column for options and buttons -->
-                <div class="col-md-6 smaller-text text-left">
-                    <!-- Gray bar with question number and Mark for Review -->
-                    <div class="gray-bar">
-                        <div class="question-number">1</div>
-                        <button class = "bookmark">
-
-                       
-                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
-                                <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
-                            </svg>
-                        </button>
-                        <div class="mark-review">&emsp;Mark for Review</div>
-                    </div>
-                    
-                    <div id="options" class="full-width">
-                        <form>
-                            <label>
-                                <input type="radio" name="option" value="A"> A) scholarly
-                            </label><br>
-                            <label>
-                                <input type="radio" name="option" value="B"> B) melodic
-                            </label><br>
-                            <label>
-                                <input type="radio" name="option" value="C"> C) jarring
-                            </label><br>
-                            <label>
-                                <input type="radio" name="option" value="D"> D) personal
-                            </label>
-                        </form>
-                    </div>
-                    <div class="mt-3">
-                        
-                    </div>
-                    <div id="feedback" class="mt-3 full-width"></div>
-                    <div id="explanation" class="mt-3 full-width"></div>
-                </div>
-            </div>
-            <style>
-                .jokey {
-    font-family: 'Arial', sans-serif; /* Clean and modern font */
-    font-size: 100%; /* Slightly larger font size for emphasis */
-    color: #333; /* Dark gray color for a professional look */
-    text-align: center; /* Center align the text */
-    text-transform: none; /* Keep original case for a natural feel */
-    letter-spacing: 0.5px; /* Slight spacing for readability */
-    line-height: 1.5; /* Improved line height for better readability */
-    background: linear-gradient(90deg, #6a11cb, #2575fc); /* Gradient background */
-    -webkit-background-clip: text; /* Clip background to text */
-    -webkit-text-fill-color: transparent; /* Make text color transparent to show gradient */
-    animation: fadeIn 1s ease-in-out; /* Fade-in animation */
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-            </style>
-
-            <div class="divider"></div>
-            <div class="bbar">
-                <div class="nav-left">
-                    SAT Educator Question Bank 
-                </div>
-                <div class = "jokey">
-                    <div class="nav-center">
-                        <div id="scoreResult"></div>
-
-                    </div>
-                </div>
-                
-                <div class="nav-right">
-
-                    <button class="nav-button" id="calculateScoreBtn">Calculate Score</button>
-
-                    <button id="submit" class="nav-button">Submit</button>
-                        <button id="next" class="nav-button">Next</button>
-                </div>
-            </div>
-
-        </div>
-        
-            <script src="site.js"></script>
-        <div id="section2" class="hidden" data-aos="fade-up">
-            <br />
-            <br />
-
-            <div style="display: flex; justify-content: center;">
-                
-
-                <br>
-            </div>
-        </div>
-        <br />
-        <br />
-        <br />
     </div>
 
-        
-        <br />
-        <br />
-        <br />
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-
-        // Render MathJax
-        MathJax.typeset();
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>  
-    <script>
+        let isAnnotating = false;
+        let isBookmarkActive = false;
         let minutes = 0;
         let seconds = 0;
         let intervalId = null;
 
+        const annotateBtn = document.getElementById('annotateBtn');
+        const questionDiv = document.getElementById('question');
+        const bookmarkButton = document.querySelector('.bookmark');
+        const optionsContainer = document.getElementById('options');
         const stopwatchElement = document.getElementById('stopwatch');
-        const startBtn = document.getElementById('startBtn');
-        const stopBtn = document.getElementById('stopBtn');
-        const resetBtn = document.getElementById('resetBtn');
-        const modal = new bootstrap.Modal(document.getElementById('stopwatchModal'));
+        const calculateScoreBtn = document.getElementById('calculateScoreBtn');
+        const submitBtn = document.getElementById('submit');
+        const nextBtn = document.getElementById('next');
+
+        function toggleAnnotation() {
+            isAnnotating = !isAnnotating;
+            questionDiv.classList.toggle('annotating', isAnnotating);
+            annotateBtn.textContent = isAnnotating ? 'Stop Annotating' : 'Annotate';
+        }
+
+        function highlightSelection() {
+            if (!isAnnotating) return;
+            const selection = window.getSelection();
+            if (selection.rangeCount > 0) {
+                const range = selection.getRangeAt(0);
+                if (!range.collapsed) {
+                    const span = document.createElement('span');
+                    span.className = 'highlight';
+                    range.surroundContents(span);
+                    selection.removeAllRanges();
+                }
+            }
+        }
+
+        function toggleBookmark() {
+            isBookmarkActive = !isBookmarkActive;
+            const labels = optionsContainer.querySelectorAll('label');
+            labels.forEach(label => {
+                if (isBookmarkActive) {
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.className = 'option-checkbox';
+                    checkbox.addEventListener('change', () => {
+                        label.classList.toggle('strikethrough', checkbox.checked);
+                    });
+                    label.insertBefore(checkbox, label.firstChild);
+                } else {
+                    const checkbox = label.querySelector('.option-checkbox');
+                    if (checkbox) {
+                        label.classList.remove('strikethrough');
+                        label.removeChild(checkbox);
+                    }
+                }
+            });
+        }
 
         function updateStopwatch() {
             seconds++;
@@ -1028,242 +248,44 @@ label {
             stopwatchElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
         }
 
-        startBtn.addEventListener('click', () => {
+        function startStopwatch() {
             if (intervalId === null) {
                 intervalId = setInterval(updateStopwatch, 1000);
             }
-            modal.hide();
-        });
+        }
 
-        stopBtn.addEventListener('click', () => {
+        function stopStopwatch() {
             if (intervalId !== null) {
                 clearInterval(intervalId);
                 intervalId = null;
             }
-            modal.hide();
-        });
+        }
 
-        resetBtn.addEventListener('click', () => {
-            clearInterval(intervalId);
-            intervalId = null;
+        function resetStopwatch() {
+            stopStopwatch();
             minutes = 0;
             seconds = 0;
             stopwatchElement.textContent = '00:00';
-            modal.hide();
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const annotateBtn = document.getElementById('annotateBtn');
-    const questionDiv = document.getElementById('question');
-    let isAnnotating = false;
-
-    annotateBtn.addEventListener('click', toggleAnnotation);
-
-    function toggleAnnotation() {
-        isAnnotating = !isAnnotating;
-        questionDiv.classList.toggle('annotating', isAnnotating);
-        
-        if (isAnnotating) {
-            annotateBtn.textContent = 'Stop Annotating';
-            questionDiv.addEventListener('mouseup', highlightSelection);
-        } else {
-            annotateBtn.textContent = 'Annotate';
-            questionDiv.removeEventListener('mouseup', highlightSelection);
         }
-    }
 
-    function highlightSelection() {
-        const selection = window.getSelection();
-        if (selection.rangeCount > 0) {
-            const range = selection.getRangeAt(0);
-            if (!range.collapsed) {
-                const span = document.createElement('span');
-                span.className = 'highlight';
-                range.surroundContents(span);
-                selection.removeAllRanges();
-            }
-        }
-    }
-});
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const bookmarkButton = document.querySelector('.bookmark');
-    const optionsContainer = document.getElementById('options');
-    let isBookmarkActive = false;
-
-    bookmarkButton.addEventListener('click', () => {
-        isBookmarkActive = !isBookmarkActive;
-        toggleCheckboxes(isBookmarkActive);
-    });
-
-    function toggleCheckboxes(show) {
-        const labels = optionsContainer.querySelectorAll('label');
-        labels.forEach(label => {
-            if (show) {
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.className = 'option-checkbox';
-                checkbox.addEventListener('change', () => {
-                    label.classList.toggle('strikethrough', checkbox.checked);
-                });
-                label.insertBefore(checkbox, label.firstChild);
-            } else {
-                const checkbox = label.querySelector('.option-checkbox');
-                if (checkbox) {
-                    label.classList.remove('strikethrough');
-                    label.removeChild(checkbox);
-                }
-            }
+        annotateBtn.addEventListener('click', toggleAnnotation);
+        questionDiv.addEventListener('mouseup', highlightSelection);
+        bookmarkButton.addEventListener('click', toggleBookmark);
+        calculateScoreBtn.addEventListener('click', () => {
+            // Implement score calculation logic here
+            console.log('Calculating score...');
         });
-    }
-});
+        submitBtn.addEventListener('click', () => {
+            // Implement answer submission logic here
+            console.log('Submitting answer...');
+        });
+        nextBtn.addEventListener('click', () => {
+            // Implement next question logic here
+            console.log('Loading next question...');
+        });
+
+        // Start the stopwatch when the page loads
+        startStopwatch();
     </script>
-   
-    
 </body>
-<div style="display: flex; justify-content: center;">
-    <style>
-        .site-footer
-{
-            background-color: #f8f9fa;
-  font-size:15px;
-  line-height:24px;
-  color:#737373;
-}
-.site-footer hr
-{
-  border-top-color:#bbb;
-  opacity:0.5
-}
-.site-footer hr.small
-{
-  margin:20px 0
-}
-.site-footer h6
-{
-  color:orange;
-  font-size:16px;
-  text-transform:uppercase;
-  margin-top:5px;
-  letter-spacing:2px
-}
-.site-footer a
-{
-  color:#737373;
-}
-.site-footer a:hover
-{
-  color:#3366cc;
-  text-decoration:none;
-}
-.footer-links
-{
-  padding-left:0;
-  list-style:none
-}
-.footer-links li
-{
-  display:block
-}
-.footer-links a
-{
-  color:#737373
-}
-.footer-links a:active,.footer-links a:focus,.footer-links a:hover
-{
-  color:#3366cc;
-  text-decoration:none;
-}
-.footer-links.inline li
-{
-  display:inline-block
-}
-.site-footer .social-icons
-{
-  text-align:right
-}
-.site-footer .social-icons a
-{
-  width:40px;
-  height:40px;
-  line-height:40px;
-  margin-left:6px;
-  margin-right:0;
-  border-radius:100%;
-  background-color:#33353d
-}
-.copyright-text
-{
-  margin:0
-}
-
-.social-icons
-{
-  padding-left:0;
-  margin-bottom:0;
-  list-style:none
-}
-.social-icons li
-{
-  display:inline-block;
-  margin-bottom:4px
-}
-.social-icons li.title
-{
-  margin-right:15px;
-  text-transform:uppercase;
-  color:#96a2b2;
-  font-weight:700;
-  font-size:13px
-}
-.social-icons a{
-  background-color:#eceeef;
-  color:#818a91;
-  font-size:16px;
-  display:inline-block;
-  line-height:44px;
-  width:44px;
-  height:44px;
-  text-align:center;
-  margin-right:8px;
-  border-radius:100%;
-  -webkit-transition:all .2s linear;
-  -o-transition:all .2s linear;
-  transition:all .2s linear
-}
-.social-icons a:active,.social-icons a:focus,.social-icons a:hover
-{
-  color:#fff;
-  background-color:#29aafe
-}
-.social-icons.size-sm a
-{
-  line-height:34px;
-  height:34px;
-  width:34px;
-  font-size:14px
-}
-.social-icons a.facebook:hover
-{
-  background-color:#3b5998
-}
-.social-icons a.twitter:hover
-{
-  background-color:#00aced
-}
-.social-icons a.linkedin:hover
-{
-  background-color:#007bb6
-}
-.social-icons a.dribbble:hover
-{
-  background-color:#ea4c89
-}
-
-    </style>
-    
-</div>
-
 </html>
